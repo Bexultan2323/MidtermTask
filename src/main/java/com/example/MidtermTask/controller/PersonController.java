@@ -5,10 +5,11 @@ import com.example.MidtermTask.repository.PersonRepository;
 import com.example.MidtermTask.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class PersonController {
     @Autowired
     private final PersonService personService;
@@ -20,12 +21,10 @@ public class PersonController {
 
     @GetMapping("/api/v2/users")
     public String show(Model model){
-        Iterable<Person> data= personRepository.findAll();
-        model.addAttribute("data",data);
+        Iterable<Person> item= personRepository.findAll();
+        model.addAttribute("item",item);
         return "index";
     }
-
-
 
     public ResponseEntity<?> getAct(){
         return ResponseEntity.ok(personService.getAll());

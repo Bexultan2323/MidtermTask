@@ -1,3 +1,4 @@
+DROP Table IF exists Person;
 create table Person(
     id int8 PRIMARY KEY,
     firstname varchar(128),
